@@ -1,9 +1,3 @@
-/* CUSTOM PROPERTIES */
-
-:root {
-	--custom-property: value;
-}
-
 /* MODIFIERS */
 
 .--clearfix::before,
