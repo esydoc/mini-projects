@@ -1,4 +1,10 @@
-/* MODIFIERS */
+/* PRESET FONT SIZE */
+
+html {
+	font-size: 12px;
+}
+
+/* COMMON MODIFIERS */
 
 .--clearfix::before,
 .--clearfix::after {
@@ -73,18 +79,36 @@
 	(-webkit-min-device-pixel-ratio: 1.25) {
 }
 
-@media only screen and (min-width: 32rem) {
+@media only screen and (min-width: 320px) {
 }
-@media only screen and (min-width: 60rem) {
+
+@media only screen and (min-width: 600px) {
 }
-@media only screen and (min-width: 76.8rem) {
+
+@media only screen and (min-width: 768px) {
+	html {
+		font-size: 14px;
+	}
 }
-@media only screen and (min-width: 99.2rem) {
+
+@media only screen and (min-width: 992px) {
 }
-@media only screen and (min-width: 120rem) {
+
+@media only screen and (min-width: 1200px) {
+	html {
+		font-size: 16px;
+	}
 }
 
 @media (prefers-color-scheme: light) {
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation: none !important;
+		transition-duration: 0s !important;
+		transition-delay: 0s !important;
+	}
 }
 
 /* HOVER EVENTS */

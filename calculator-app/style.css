@@ -1,6 +1,8 @@
+/* CUSTOM PROPERTIES */
+
 :root {
 	--button-height: 4.2rem;
-	--button-margin: 0.16rem;
+	--button-margin: 0.32rem;
 	--button-padding: 0.8rem;
 	--button-width: 4.2rem;
 
@@ -16,12 +18,9 @@
 }
 
 * {
+	box-sizing: border-box;
 	padding: 0;
 	position: relative;
-}
-
-html {
-	font-size: 12px;
 }
 
 body {
@@ -35,6 +34,8 @@ body {
 	width: 100vw;
 }
 
+/* CONTAINER */
+
 .calculator {
 	border-radius: 0.8rem;
 	box-shadow: 0 0 15px 5px #00000050;
@@ -43,24 +44,28 @@ body {
 	width: fit-content;
 }
 
+/* DISPLAY */
+
 .calculator__display {
 	border: none;
-	border-radius: 1.6rem;
+	border-radius: 0.32rem;
 	caret-color: transparent;
-	font-size: 4.8rem;
+	font-size: 3.2rem;
 	height: calc(var(--button-height) * 2);
-	margin-bottom: calc(var(--button-margin) * 4);
+	margin-bottom: calc(var(--button-margin) * 3);
 	text-align: right;
 	width: calc(var(--button-width) * 4 + var(--button-margin) * 8);
 }
 
-.calculator__display::placeholder {
+.calculator__display {
 	padding: 0.8rem;
 }
 
 .calculator__display:focus {
 	outline: none;
 }
+
+/* BUTTONS */
 
 [type='button'] {
 	border: none;
@@ -80,21 +85,29 @@ body {
 	width: calc(var(--button-width) * 2 + var(--button-margin) * 4);
 }
 
-.row-1__button:hover {
-	background: var(--nero-grey-hover);
+/* BUTTONS__HOVER EFFECTS */
+
+@media (hover: hover) and (pointer: fine) {
+	.row-1__button:hover {
+		background: var(--nero-grey-hover);
+	}
+
+	.row-2__button:hover,
+	.row-3__button:hover,
+	.row-4__button:hover,
+	.row-5__button:hover {
+		background: var(--nero-hover);
+	}
+
+	input:last-child:hover {
+		background: var(--theme-red-hover);
+	}
 }
 
 .row-1__button,
 .row-1__button:active {
 	background: var(--nero-grey);
 	color: var(--nero-black);
-}
-
-.row-2__button:hover,
-.row-3__button:hover,
-.row-4__button:hover,
-.row-5__button:hover {
-	background: var(--nero-hover);
 }
 
 .row-2__button,
@@ -109,15 +122,13 @@ body {
 	color: var(--light-floral-white);
 }
 
-input:last-child:hover {
-	background: var(--theme-red-hover);
-}
-
 input:last-child,
 input:last-child:active {
 	background: var(--theme-red);
 	color: var(--light-floral-white);
 }
+
+/* DARK THEME */
 
 @media (prefers-color-scheme: dark) {
 	body {
