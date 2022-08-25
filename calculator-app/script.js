@@ -4,7 +4,7 @@ const display = document.querySelector('.calculator__display');
 
 // If a keypress matches a button value on the calculator,
 // Display the value
-window.addEventListener('keydown', displayKeypressInput);
+window.addEventListener('keydown', displayKeyInput);
 
 // If a button on the calculator is clicked,
 // Display the value
@@ -12,18 +12,6 @@ calculator.addEventListener('click', displayButtonInput);
 
 // Function for displaying button clicks
 function displayButtonInput(event) {
-	// If the value is X,
-	// Display the multiplication operator
-	// If the value is C,
-	// call the displayCLear function
-	// If the value is N AND the display only contains numbers,
-	// Invert the current value
-	// If the value is P AND the display only contains numbers,
-	// Divide the currently displayed value by 100
-	// If the division button is clicked,
-	// Display the divison operator
-	// If the equals button is clicked,
-	// Display the result
 	if (
 		event.target.value == '0' ||
 		event.target.value == '1' ||
@@ -35,21 +23,40 @@ function displayButtonInput(event) {
 		event.target.value == '7' ||
 		event.target.value == '8' ||
 		event.target.value == '9' ||
-		event.target.value == '+' ||
-		event.target.value == '-' ||
 		event.target.value == '.'
 	) {
-		console.log(event.target.value);
 		display.value += event.target.value;
-	}
-	if (event.target.value == 'x') {
-		console.log('*');
+	} else if (
+		(event.target.value == '+' || event.target.value == '-') &&
+		/^[0-9.*/+-]+$/.test(display.value) == true &&
+		/^[0-9.]/.test(display.value.charAt(display.value.length - 1)) == true
+	) {
+		display.value += event.target.value;
+	} else if (
+		event.target.value == '×' &&
+		/^[0-9.*/+-]+$/.test(display.value) == true &&
+		/^[0-9.]/.test(display.value.charAt(display.value.length - 1)) == true
+	) {
 		display.value += '*';
+	} else if (
+		event.target.value == '÷' &&
+		/^[0-9.*/+-]+$/.test(display.value) == true &&
+		/^[0-9.]/.test(display.value.charAt(display.value.length - 1)) == true
+	) {
+		display.value += '/';
+	} else if (event.target.value == '±' && /^[0-9.-]+$/.test(display.value) == true) {
+		display.value = -display.value;
+	} else if (event.target.value == '%' && /^[0-9.-]+$/.test(display.value) == true) {
+		display.value = display.value / 100;
+	} else if (event.target.value == '=') {
+		displayResult();
+	} else if (event.target.value == 'C') {
+		displayClear();
 	}
 }
 
-// Function for displaying key presses
-function displayKeypressInput(event) {
+// Function for displaying keypress values
+function displayKeyInput(event) {
 	if (
 		event.key == '0' ||
 		event.key == '1' ||
