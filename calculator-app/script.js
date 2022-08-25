@@ -6,22 +6,50 @@ const display = document.querySelector('.calculator__display');
 // Display the value
 window.addEventListener('keydown', displayKeypressInput);
 
+// If a button on the calculator is clicked,
+// Display the value
+calculator.addEventListener('click', displayButtonInput);
+
+// Function for displaying button clicks
+function displayButtonInput(event) {
+	// If the value is X,
+	// Display the multiplication operator
+	// If the value is C,
+	// call the displayCLear function
+	// If the value is N AND the display only contains numbers,
+	// Invert the current value
+	// If the value is P AND the display only contains numbers,
+	// Divide the currently displayed value by 100
+	// If the division button is clicked,
+	// Display the divison operator
+	// If the equals button is clicked,
+	// Display the result
+	if (
+		event.target.value == '0' ||
+		event.target.value == '1' ||
+		event.target.value == '2' ||
+		event.target.value == '3' ||
+		event.target.value == '4' ||
+		event.target.value == '5' ||
+		event.target.value == '6' ||
+		event.target.value == '7' ||
+		event.target.value == '8' ||
+		event.target.value == '9' ||
+		event.target.value == '+' ||
+		event.target.value == '-' ||
+		event.target.value == '.'
+	) {
+		console.log(event.target.value);
+		display.value += event.target.value;
+	}
+	if (event.target.value == 'x') {
+		console.log('*');
+		display.value += '*';
+	}
+}
+
 // Function for displaying key presses
 function displayKeypressInput(event) {
-	// If any numbers or operators are pressed,
-	// Display them
-	// If the X key is pressed,
-	// Display the multiplication operator
-	// If the N key is pressed AND the display only contains numbers,
-	// Invert the current value
-	// If the P key is pressed AND the display only contains numbers,
-	// Divide the currently displayed value by 100
-	// If the backspace or delete keys are pressed,
-	// Remove the last displayed keypress
-	// If the equals or enter keys are pressed,
-	// Display the result
-	// If the C or escape keys are pressed,
-	// Clear the display
 	if (
 		event.key == '0' ||
 		event.key == '1' ||
@@ -33,14 +61,20 @@ function displayKeypressInput(event) {
 		event.key == '7' ||
 		event.key == '8' ||
 		event.key == '9' ||
-		event.key == '+' ||
-		event.key == '-' ||
-		event.key == '*' ||
-		event.key == '/' ||
 		event.key == '.'
 	) {
 		display.value += event.key;
-	} else if (event.key == 'x') {
+	} else if (
+		(event.key == '+' || event.key == '-' || event.key == '/') &&
+		/^[0-9.*/+-]+$/.test(display.value) == true &&
+		/^[0-9.]/.test(display.value.charAt(display.value.length - 1)) == true
+	) {
+		display.value += event.key;
+	} else if (
+		(event.key == 'x' || event.key == '*') &&
+		/^[0-9.*/+-]+$/.test(display.value) == true &&
+		/^[0-9.]/.test(display.value.charAt(display.value.length - 1)) == true
+	) {
 		display.value += '*';
 	} else if (event.key == 'n' && /^[0-9.-]+$/.test(display.value) == true) {
 		display.value = -display.value;
@@ -57,7 +91,12 @@ function displayKeypressInput(event) {
 
 // Function for displaying the result
 function displayResult() {
-	display.value = math.evaluate(display.value);
+	let currentResult = typeof math.evaluate(display.value);
+	if (currentResult == 'number') {
+		display.value = math.evaluate(display.value);
+	} else {
+		console.log(currentResult);
+	}
 }
 
 // Function for clearing the display
