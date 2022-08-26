@@ -60,6 +60,16 @@ html {
 	user-select: none;
 }
 
+.element::-webkit-scrollbar {
+	display: none;
+}
+
+.--scrollbar-hidden {
+	overflow: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
 /* MEDIA QUERIES */
 
 @media print {

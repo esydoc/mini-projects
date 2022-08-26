@@ -26,7 +26,7 @@
 body {
 	align-items: center;
 	background: var(--light-floral-white);
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 2rem;
 	display: flex;
 	height: 100vh;
@@ -34,11 +34,13 @@ body {
 	width: 100vw;
 }
 
-/* CONTAINER */
+/* CALCULATOR BODY */
 
 .calculator {
 	border-radius: 0.8rem;
 	box-shadow: 0 0 15px 5px #00000050;
+	max-height: 90vh;
+	min-height: 550px;
 	padding: 1.6rem;
 	text-align: center;
 	width: fit-content;
@@ -52,17 +54,24 @@ body {
 	caret-color: transparent;
 	font-size: 3.2rem;
 	height: calc(var(--button-height) * 2);
+	line-height: var(--button-height);
 	margin-bottom: calc(var(--button-margin) * 3);
+	padding: 0.8rem;
+	resize: none;
 	text-align: right;
 	width: calc(var(--button-width) * 4 + var(--button-margin) * 8);
 }
 
-.calculator__display {
-	padding: 0.8rem;
-}
-
 .calculator__display:focus {
 	outline: none;
+}
+
+.calculator__display::placeholder {
+	opacity: 50%;
+}
+
+.calculator__display::-webkit-scrollbar {
+	display: none;
 }
 
 /* BUTTONS */
@@ -85,22 +94,14 @@ body {
 	width: calc(var(--button-width) * 2 + var(--button-margin) * 4);
 }
 
-/* BUTTONS__HOVER EFFECTS */
-
 @media (hover: hover) and (pointer: fine) {
-	.row-1__button:hover {
-		background: var(--nero-grey-hover);
-	}
-
+	.row-1__button:hover,
 	.row-2__button:hover,
 	.row-3__button:hover,
 	.row-4__button:hover,
-	.row-5__button:hover {
-		background: var(--nero-hover);
-	}
-
+	.row-5__button:hover,
 	input:last-child:hover {
-		background: var(--theme-red-hover);
+		filter: brightness(125%);
 	}
 }
 
@@ -108,6 +109,7 @@ body {
 .row-1__button:active {
 	background: var(--nero-grey);
 	color: var(--nero-black);
+	filter: brightness(100%);
 }
 
 .row-2__button,
@@ -120,12 +122,18 @@ body {
 .row-5__button:active {
 	background: var(--nero);
 	color: var(--light-floral-white);
+	filter: brightness(100%);
 }
 
 input:last-child,
 input:last-child:active {
 	background: var(--theme-red);
 	color: var(--light-floral-white);
+	filter: brightness(100%);
+}
+
+.--is-active {
+	filter: brightness(125%);
 }
 
 /* DARK THEME */
