@@ -3,27 +3,27 @@ const calculator = document.querySelector('.calculator');
 
 const display = document.querySelector('.calculator__display');
 
-const calculatorButtons = document.querySelectorAll('#button');
+const calculatorButtons = document.querySelectorAll("input[type='button']");
 
-const clearButton = document.querySelector("input[value='C']");
-const invertButton = document.getElementById('#invert');
-const percentageButton = document.querySelector("input[value='%']");
-const divideButton = document.querySelector("input[value='/']");
-const sevenButton = document.querySelector("input[value='7']");
-const eightButton = document.querySelector("input[value='8']");
-const nineButton = document.querySelector("input[value='9']");
-const multiplyButton = document.querySelector("input[value='*']");
-const fourButton = document.querySelector("input[value='4']");
-const fiveButton = document.querySelector("input[value='5']");
-const sixButton = document.querySelector("input[value='6']");
-const subtractButton = document.querySelector("input[value='-']");
-const oneButton = document.querySelector("input[value='1']");
-const twoButton = document.querySelector("input[value='2']");
-const threeButton = document.querySelector("input[value='3']");
-const addButton = document.querySelector("input[value='+']");
-const zeroButton = document.querySelector("input[value='0']");
-const decimalButton = document.querySelector("input[value='.']");
-const equalsButton = document.querySelector("input[value='=']");
+const clearButton = document.querySelector('.clear');
+const invertButton = document.querySelector('.invert');
+const percentButton = document.querySelector('.percent');
+const divideButton = document.querySelector('.divide');
+const sevenButton = document.querySelector('.seven');
+const eightButton = document.querySelector('.eight');
+const nineButton = document.querySelector('.nine');
+const multiplyButton = document.querySelector('.multiply');
+const fourButton = document.querySelector('.four');
+const fiveButton = document.querySelector('.five');
+const sixButton = document.querySelector('.six');
+const subtractButton = document.querySelector('.subtract');
+const oneButton = document.querySelector('.one');
+const twoButton = document.querySelector('.two');
+const threeButton = document.querySelector('.three');
+const addButton = document.querySelector('.add');
+const zeroButton = document.querySelector('.zero');
+const decimalButton = document.querySelector('.decimal');
+const equalsButton = document.querySelector('.equals');
 
 // If a keypress matches a button value on the calculator,
 // Display the value
@@ -39,146 +39,147 @@ window.addEventListener('keydown', simulateButtonClick);
 
 // Function for simulating button clicks
 function simulateButtonClick(e) {
-	let key = e.key;
-	console.log(key);
-	if (key == 'c') {
+	if (e.key == 'c') {
 		clearButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			clearButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == 'n') {
+	} else if (e.key == 'i') {
 		invertButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			invertButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == 'p') {
-		percentageButton.classList.toggle('--is-active');
+	} else if (e.key == 'p') {
+		percentButton.classList.toggle('--is-active');
 		setTimeout(() => {
-			percentageButton.classList.toggle('--is-active');
+			percentButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '/') {
+	} else if (e.key == '/') {
 		divideButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			divideButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '7') {
+	} else if (e.key == '7') {
 		sevenButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			sevenButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '8') {
+	} else if (e.key == '8') {
 		eightButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			eightButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '9') {
+	} else if (e.key == '9') {
 		nineButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			nineButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '*' || key == 'x') {
+	} else if (e.key == 'x') {
 		multiplyButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			multiplyButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '4') {
+	} else if (e.key == '4') {
 		fourButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			fourButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '5') {
+	} else if (e.key == '5') {
 		fiveButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			fiveButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '6') {
+	} else if (e.key == '6') {
 		sixButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			sixButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '-') {
+	} else if (e.key == '-') {
 		subtractButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			subtractButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '1') {
+	} else if (e.key == '1') {
 		oneButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			oneButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '2') {
+	} else if (e.key == '2') {
 		twoButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			twoButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '3') {
+	} else if (e.key == '3') {
 		threeButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			threeButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '+') {
+	} else if (e.key == '+') {
 		addButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			addButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '0') {
+	} else if (e.key == '0') {
 		zeroButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			zeroButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '.') {
+	} else if (e.key == '.') {
 		decimalButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			decimalButton.classList.toggle('--is-active');
 		}, 100);
-	} else if (key == '=' || key == 'Enter') {
+	} else if (e.key == '=' || e.key == 'Enter') {
 		equalsButton.classList.toggle('--is-active');
 		setTimeout(() => {
 			equalsButton.classList.toggle('--is-active');
 		}, 100);
 	}
+	console.log(e.key);
 }
 
 // Function for displaying button clicks
 function displayButtonInput(e) {
 	if (
-		e.target.value == '0' ||
-		e.target.value == '1' ||
-		e.target.value == '2' ||
-		e.target.value == '3' ||
-		e.target.value == '4' ||
-		e.target.value == '5' ||
-		e.target.value == '6' ||
-		e.target.value == '7' ||
-		e.target.value == '8' ||
-		e.target.value == '9'
+		e.target.value == zeroButton.value ||
+		e.target.value == oneButton.value ||
+		e.target.value == twoButton.value ||
+		e.target.value == threeButton.value ||
+		e.target.value == fourButton.value ||
+		e.target.value == fiveButton.value ||
+		e.target.value == sixButton.value ||
+		e.target.value == sevenButton.value ||
+		e.target.value == eightButton.value ||
+		e.target.value == nineButton.value
 	) {
 		display.value += e.target.value;
 	} else if (
-		(e.target.value == '+' || e.target.value == '-' || e.target.value == '.') &&
+		(e.target.value == addButton.value ||
+			e.target.value == subtractButton.value ||
+			e.target.value == decimalButton.value) &&
 		/^[0-9.*/+-]+$/.test(display.value) == true &&
 		/^[0-9]/.test(display.value.charAt(display.value.length - 1)) == true
 	) {
 		display.value += e.target.value;
 	} else if (
-		e.target.value == '×' &&
+		e.target.value == multiplyButton.value &&
 		/^[0-9.*/+-]+$/.test(display.value) == true &&
 		/^[0-9.]/.test(display.value.charAt(display.value.length - 1)) == true
 	) {
 		display.value += '*';
 	} else if (
-		e.target.value == '÷' &&
+		e.target.value == divideButton.value &&
 		/^[0-9.*/+-]+$/.test(display.value) == true &&
 		/^[0-9.]/.test(display.value.charAt(display.value.length - 1)) == true
 	) {
 		display.value += '/';
-	} else if (e.target.value == '±' && /^[0-9.-]+$/.test(display.value) == true) {
+	} else if (e.target.value == invertButton.value && /^[0-9.-]+$/.test(display.value) == true) {
 		display.value = -display.value;
-	} else if (e.target.value == '%' && /^[0-9.-]+$/.test(display.value) == true) {
+	} else if (e.target.value == percentButton.value && /^[0-9.-]+$/.test(display.value) == true) {
 		display.value = display.value / 100;
-	} else if (e.target.value == '=') {
+	} else if (e.target.value == equalsButton.value) {
 		displayResult();
-	} else if (e.target.value == 'C') {
+	} else if (e.target.value == clearButton.value) {
 		displayClear();
 	}
 }

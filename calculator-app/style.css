@@ -129,7 +129,6 @@ input:last-child,
 input:last-child:active {
 	background: var(--theme-red);
 	color: var(--light-floral-white);
-	filter: brightness(100%);
 }
 
 .--is-active {
