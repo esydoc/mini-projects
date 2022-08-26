@@ -27,7 +27,7 @@ body {
 	align-items: center;
 	background: var(--light-floral-white);
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	font-size: 2rem;
+	font-size: 1.6rem;
 	display: flex;
 	height: 100vh;
 	justify-content: center;
@@ -39,8 +39,7 @@ body {
 .calculator {
 	border-radius: 0.8rem;
 	box-shadow: 0 0 15px 5px #00000050;
-	max-height: 90vh;
-	min-height: 550px;
+	height: fit-content;
 	padding: 1.6rem;
 	text-align: center;
 	width: fit-content;
@@ -80,6 +79,7 @@ body {
 	border: none;
 	border-radius: 50%;
 	cursor: pointer;
+	filter: brightness(90%);
 	height: var(--button-height);
 	margin: var(--button-margin);
 	padding: 0.8rem;
@@ -94,48 +94,35 @@ body {
 	width: calc(var(--button-width) * 2 + var(--button-margin) * 4);
 }
 
-@media (hover: hover) and (pointer: fine) {
-	.row-1__button:hover,
-	.row-2__button:hover,
-	.row-3__button:hover,
-	.row-4__button:hover,
-	.row-5__button:hover,
-	input:last-child:hover {
-		filter: brightness(125%);
-	}
-}
-
-.row-1__button,
-.row-1__button:active {
+.special,
+.special:active {
 	background: var(--nero-grey);
 	color: var(--nero-black);
-	filter: brightness(100%);
 }
 
-.row-2__button,
-.row-3__button,
-.row-4__button,
-.row-5__button,
-.row-2__button:active,
-.row-3__button:active,
-.row-4__button:active,
-.row-5__button:active {
+.integer,
+.integer:active {
 	background: var(--nero);
 	color: var(--light-floral-white);
-	filter: brightness(100%);
 }
 
-input:last-child,
-input:last-child:active {
+.operator,
+.operator:active {
 	background: var(--theme-red);
 	color: var(--light-floral-white);
 }
 
 .--is-active {
-	filter: brightness(125%);
+	filter: brightness(110%);
 }
 
-/* DARK THEME */
+/* MEDIA QUERIES */
+
+@media (hover: hover) and (pointer: fine) {
+	[type='button']:hover {
+		filter: brightness(110%);
+	}
+}
 
 @media (prefers-color-scheme: dark) {
 	body {
