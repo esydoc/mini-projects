@@ -1,4 +1,3 @@
-// Store required DOM elements
 const display = document.querySelector('.calculator__display');
 
 // If a button is clicked,
