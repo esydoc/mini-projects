@@ -87,21 +87,27 @@ body {
 	width: var(--button-width);
 }
 
-[value='0'] {
+.zero__button {
 	border-radius: 5rem;
 	text-align: left;
 	padding-left: calc(var(--button-width) / 2 - 0.56rem);
 	width: calc(var(--button-width) * 2 + var(--button-margin) * 4);
 }
 
-.special,
-.special:active {
+.clear__button,
+.clear__button:active,
+.invert__button,
+.invert__button:active,
+.percent__button,
+.percent__button:active,
+.decimal__button,
+.decimal__button:active {
 	background: var(--nero-grey);
 	color: var(--nero-black);
 }
 
-.integer,
-.integer:active {
+.digit,
+.digit:active {
 	background: var(--nero);
 	color: var(--light-floral-white);
 }
