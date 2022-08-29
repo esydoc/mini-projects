@@ -1,5 +1,7 @@
 /* 
 
+BEM/PCM
+
 GROUPING RULES
 
 groupingProperties {
@@ -15,8 +17,6 @@ groupingProperties {
 }
 
 */
-
-/* CUSTOM PROPERTIES */
 
 :root {
 	--button-height: 4.2rem;
@@ -50,6 +50,7 @@ body {
 
 	background: var(--light-floral-white);
 
+	color: var(--nero-black);
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 1.6rem;
 }
@@ -95,19 +96,22 @@ body {
 
 /* BUTTONS */
 
-[class$='__button'],
+[class$='Button'],
 .--active {
-	border: none;
-	border-radius: 50%;
-	cursor: pointer;
 	height: var(--button-height);
 	margin: var(--button-margin);
 	padding: 0.8rem;
-	text-align: center;
 	width: var(--button-width);
+
+	border: none;
+	border-radius: 50%;
+
+	text-align: center;
+
+	cursor: pointer;
 }
 
-[class$='__button'] {
+[class$='Button'] {
 	filter: brightness(95%);
 }
 
@@ -115,35 +119,40 @@ body {
 	filter: brightness(110%);
 }
 
-.zero__button {
-	border-radius: 5rem;
-	text-align: left;
+[value='0'] {
 	padding-left: calc(var(--button-width) / 2 - 0.56rem);
 	width: calc(var(--button-width) * 2 + var(--button-margin) * 4);
+
+	border-radius: 5rem;
+
+	text-align: left;
 }
 
-.special,
-.special:active {
+.specialButton,
+.specialButton:active {
 	background: var(--nero-grey);
+
 	color: var(--nero-black);
 }
 
-.digit,
-.digit:active {
+.digitButton,
+.digitButton:active {
 	background: var(--nero);
+
 	color: var(--light-floral-white);
 }
 
-.operator,
-.operator:active {
+.operatorButton,
+.operatorButton:active {
 	background: var(--theme-red);
+
 	color: var(--light-floral-white);
 }
 
 /* MEDIA QUERIES */
 
 @media (hover: hover) and (pointer: fine) {
-	[type='button']:hover {
+	[class$='Button']:hover {
 		filter: brightness(110%);
 	}
 }
@@ -151,11 +160,13 @@ body {
 @media (prefers-color-scheme: dark) {
 	body {
 		background: var(--nero-black);
+
 		color: var(--light-floral-white);
 	}
 
 	.calculator__display {
 		background: var(--nero);
+
 		color: var(--light-floral-white);
 	}
 
