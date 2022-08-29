@@ -1,3 +1,21 @@
+/* 
+
+GROUPING RULES
+
+groupingProperties {
+	box: ;
+
+	border: ;
+
+	background: ;
+
+	text: ;
+
+	other: ;
+}
+
+*/
+
 /* CUSTOM PROPERTIES */
 
 :root {
@@ -25,40 +43,42 @@
 
 body {
 	align-items: center;
-	background: var(--light-floral-white);
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	font-size: 1.6rem;
 	display: flex;
 	height: 100vh;
 	justify-content: center;
 	width: 100vw;
+
+	background: var(--light-floral-white);
+
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 1.6rem;
 }
 
-/* CALCULATOR */
-
 .calculator {
-	border-radius: 0.8rem;
 	box-shadow: 0 0 15px 5px #00000050;
 	height: fit-content;
 	padding: 1.6rem;
-	text-align: center;
 	width: fit-content;
+
+	border-radius: 0.8rem;
+
+	text-align: center;
 }
 
-/* DISPLAY */
-
 .calculator__display {
-	border: none;
-	border-radius: 0.32rem;
-	caret-color: transparent;
-	font-size: 3.2rem;
 	height: calc(var(--button-height) * 2);
-	line-height: var(--button-height);
 	margin-bottom: calc(var(--button-margin) * 3);
 	padding: 0.8rem;
 	resize: none;
-	text-align: right;
 	width: calc(var(--button-width) * 4 + var(--button-margin) * 8);
+
+	border: none;
+	border-radius: 0.32rem;
+
+	caret-color: transparent;
+	font-size: 3.2rem;
+	line-height: var(--button-height);
+	text-align: right;
 }
 
 .calculator__display:focus {
@@ -75,16 +95,24 @@ body {
 
 /* BUTTONS */
 
-[type='button'] {
+[class$='__button'],
+.--active {
 	border: none;
 	border-radius: 50%;
 	cursor: pointer;
-	filter: brightness(90%);
 	height: var(--button-height);
 	margin: var(--button-margin);
 	padding: 0.8rem;
 	text-align: center;
 	width: var(--button-width);
+}
+
+[class$='__button'] {
+	filter: brightness(95%);
+}
+
+.--active {
+	filter: brightness(110%);
 }
 
 .zero__button {
@@ -94,14 +122,8 @@ body {
 	width: calc(var(--button-width) * 2 + var(--button-margin) * 4);
 }
 
-.clear__button,
-.clear__button:active,
-.invert__button,
-.invert__button:active,
-.percent__button,
-.percent__button:active,
-.decimal__button,
-.decimal__button:active {
+.special,
+.special:active {
 	background: var(--nero-grey);
 	color: var(--nero-black);
 }
@@ -116,10 +138,6 @@ body {
 .operator:active {
 	background: var(--theme-red);
 	color: var(--light-floral-white);
-}
-
-.--is-active {
-	filter: brightness(110%);
 }
 
 /* MEDIA QUERIES */

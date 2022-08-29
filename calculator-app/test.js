@@ -1,7 +1,3 @@
-const display = document.querySelector('#display');
-
-const errorMessage = 'Invalid!';
-
 // Function for emptying a string
 function clear(str) {
 	str = '';
@@ -59,9 +55,8 @@ function translateOperator(str) {
 
 // Function for adding an operator to a valid number string
 function addOperator(str) {
-	let currentDisplay = display.value;
 	let translatedOperator = translateOperator(str);
-	switch (validateNum(currentDisplay)) {
+	switch (validateNum(display.value)) {
 		case 'valid':
 			return translatedOperator;
 		case 'invalid':
@@ -74,8 +69,7 @@ function addOperator(str) {
 
 // Function for adding a decimal to a valid number string
 function addDecimal(str) {
-	let currentDisplay = display.value;
-	switch (validateNum(`${currentDisplay} + ${str}`)) {
+	switch (validateNum(`${display.value} + ${str}`)) {
 		case 'valid':
 			return str;
 		case 'invalid':
@@ -87,7 +81,7 @@ function addDecimal(str) {
 
 // Function for solving a string
 function solve(str) {
-	return math.eval(str);
+	return eval(str);
 }
 
 // Function for validating a number string
@@ -102,7 +96,7 @@ function validateNum(str) {
 
 // Function for updating a string
 function updateValue(str, f) {
-	if (str === str && f === undefined) {
+	if (str == str && f == undefined) {
 		display.value += str;
 	} else {
 		str = f;
@@ -115,11 +109,13 @@ function displayValue(str1, str2, f1) {
 	// Render the string
 	// Otherwise, validate the string and decide whether to update it or alert an
 	// error message
-	Number(str1) !== NaN
-		? updateValue(str1)
-		: validateNum(str1) == 'valid'
-		? updateValue(str2, f1)
-		: alert(errorMessage);
+	if (Number(str1) !== NaN && str2 == undefined && f1 == undefined) {
+		updateValue(str1);
+	} else if (Number(str1) == NaN && Number(str2) !== NaN) {
+		validateNum(str1) == 'valid' ? updateValue(str2, f1) : alert(errorMessage);
+	} else {
+		validateNum(str1) == 'valid' ? updateValue(str2, f1) : alert(errorMessage);
+	}
 }
 
 // Function for translating a keypress value to it's equivalent button id
@@ -175,127 +171,10 @@ function translateValueToClassName(str) {
 // Function for toggling the --is-active class based on button name
 function simulateButtonClick(str) {
 	let activeButtonName = translateValueToClass(str);
-	let activeButton = document.querySelector(`.${activeButtonName}__button`);
+	let activeButton = document.querySelector(`#${activeButtonName}`);
 	console.log(activeButtonName);
 	activeButton.classList.toggle('--is-active');
 	setTimeout(() => {
 		activeButton.classList.toggle('--is-active');
 	}, 100);
 }
-
-// Function for updating the display
-function updateDisplay(e) {
-	let buttonValue = e.target.value;
-	let currentDisplay = display.value;
-	let currentResult = solve(currentDisplay);
-	let pendingResult = solve(`${currentDisplay}+${buttonValue}`);
-
-	if (
-		buttonValue == '0' ||
-		buttonValue == '1' ||
-		buttonValue == '2' ||
-		buttonValue == '3' ||
-		buttonValue == '4' ||
-		buttonValue == '5' ||
-		buttonValue == '6' ||
-		buttonValue == '7' ||
-		buttonValue == '8' ||
-		buttonValue == '9'
-	) {
-		displayValue(buttonValue);
-	} else if (
-		buttonValue == '÷' ||
-		buttonValue == '×' ||
-		buttonValue == '-' ||
-		buttonValue == '+'
-	) {
-		displayValue(currentResult, currentDisplay, addOperator);
-	} else {
-		switch (buttonValue) {
-			case 'C':
-				clear(currentDisplay);
-				break;
-
-			case '±':
-				displayValue(currentResult, currentDisplay, invertValue);
-				break;
-
-			case '%':
-				displayValue(pendingResult, currentDisplay, percentValue);
-				break;
-
-			case '.':
-				displayValue(pendingResult, currentDisplay, addDecimal);
-				break;
-
-			case '=':
-				displayValue(currentResult, currentResult);
-				break;
-
-			default:
-				break;
-		}
-	}
-}
-
-// Function for updating the calculator
-function updateCalculator(e) {
-	let keyValue = e.key;
-	let currentDisplay = display.value;
-	let currentResult = solve(currentDisplay);
-	let pendingResult = solve(`${currentDisplay}+${keyValue}`);
-
-	if (
-		keyValue == '0' ||
-		keyValue == '1' ||
-		keyValue == '2' ||
-		keyValue == '3' ||
-		keyValue == '4' ||
-		keyValue == '5' ||
-		keyValue == '6' ||
-		keyValue == '7' ||
-		keyValue == '8' ||
-		keyValue == '9'
-	) {
-		displayValue(buttonValue);
-	} else if (
-		keyValue == '/' ||
-		keyValue == '*' ||
-		keyValue == 'x' ||
-		keyValue == '-' ||
-		keyValue == '+'
-	) {
-		displayValue(currentResult, currentDisplay, addOperator);
-	} else if (keyValue == '=' || keyValue == 'Enter') {
-		displayValue(currentResult, currentResult);
-	} else if (keyValue == 'Backspace' || keyValue == 'Delete') {
-		deleteLast(currentDisplay);
-	} else {
-		switch (keyValue) {
-			case 'c':
-				clear(currentDisplay);
-				break;
-
-			case 'i':
-				displayValue(currentResult, currentDisplay, invertValue);
-				break;
-
-			case 'p':
-				displayValue(pendingResult, currentDisplay, percentValue);
-				break;
-
-			case '.':
-				displayValue(pendingResult, currentDisplay, addDecimal);
-				break;
-
-			default:
-				break;
-		}
-	}
-}
-
-// If a calculator button is clicked, update the display
-window.addEventListener('click', updateDisplay);
-
-// If a keyboard key is pressed, update the calculator
-window.addEventListener('keydown', updateCalculator);
