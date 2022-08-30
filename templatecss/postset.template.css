@@ -1,0 +1,135 @@
+/* postset.css - Custom Author Styles */
+
+/* HOVER EVENTS */
+
+element:link {
+}
+
+element:visited {
+}
+
+element:hover {
+}
+
+element:active {
+}
+
+/* MEDIA QUERIES */
+
+@media (hover: hover) and (pointer: fine) {
+}
+
+@media only screen and (min-width: 320px) {
+}
+
+@media only screen and (min-width: 600px) {
+}
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 992px) {
+}
+
+@media only screen and (min-width: 1200px) {
+}
+
+@media (prefers-color-scheme: light) {
+}
+
+@media (prefers-color-scheme: dark) {
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation: none !important;
+		transition-duration: 0s !important;
+		transition-delay: 0s !important;
+	}
+}
+
+@media print {
+	*,
+	*::before,
+	*::after {
+		background: #fff !important;
+		box-shadow: none !important;
+		color: #000 !important;
+		text-shadow: none !important;
+	}
+}
+
+@media print,
+	(min-resolution: 1.25dppx),
+	(min-resolution: 120dpi),
+	(-webkit-min-device-pixel-ratio: 1.25) {
+}
+
+/* MODIFIER CLASSES */
+
+.--clearFix::before,
+.--clearFix::after {
+	content: '';
+	display: table;
+}
+
+.--clearFix::after {
+	clear: both;
+}
+
+.--invisible {
+	visibility: hidden;
+}
+
+.--hidden,
+[hidden] {
+	display: none !important;
+}
+
+.--partiallyHidden {
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 0.1rem;
+	margin: -0.1rem;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 0.1rem;
+}
+
+.--partiallyHidden.focusable:active,
+.--partiallyHidden.focusable:focus {
+	clip: auto;
+	height: auto;
+	overflow: visible;
+	position: static;
+	white-space: inherit;
+	width: auto;
+}
+
+.--forcedUnselectable {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.--forcedSelectable {
+	-webkit-user-select: all;
+	-moz-user-select: all;
+	-ms-user-select: all;
+	user-select: all;
+}
+
+.--scrollbarHidden {
+	overflow: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.targetClassName::-webkit-scrollbar {
+	display: none;
+}
+
+.--isActive {
+}
