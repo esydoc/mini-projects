@@ -1,2 +1,3 @@
+*.min.html
 *.min.css
-math.js
+*.min.js
