@@ -1,6 +1,33 @@
+/* style.css - Customer Author Styles */
+
+/* 
+
+CLASS NAMING (BEM/camelCase)
+
+.blockClass__elementClass--modifierClass {
+	property-name: value;
+}
+
+PROPERTY ORDER (By Type)
+
+propertyTypes {
+	box: ;
+
+	border: ;
+
+	background: ;
+
+	text: ;
+
+	other: ;
+}
+
+*/
+
 /* 
 
 RULES ORDER/CATERGORIES
+
 0. normalize.css
 1. Base Rules
 2. Layout Rules
