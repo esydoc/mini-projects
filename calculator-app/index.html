@@ -7,52 +7,64 @@
 		<meta name="author" content="esydoc" />
 		<meta name="description" content="" />
 		<title>Calculator App</title>
-		<!-- Favicon -->
+		<!-- Favicons -->
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 		<link rel="manifest" href="/site.webmanifest" />
 		<!-- Stylesheets -->
-		<link rel="stylesheet" href="/css/base.css" />
+		<link rel="stylesheet" href="/css/default.css" />
 		<link rel="stylesheet" href="/css/preset.css" />
 		<link rel="stylesheet" href="/calculator-app/style.css" />
+		<link rel="stylesheet" href="/css/postset.css" />
 		<!-- Scripts -->
 		<script src="/calculator-app/math.js"></script>
 	</head>
 	<body>
 		<!-- Content -->
 		<div class="calculator">
-			<textarea type="text" id="display" class="calculator__display --scrollbar-hidden" placeholder="0" /></textarea>
+			<textarea type="text" id="display" class="calculator__display --scrollbarHidden" placeholder="0" /></textarea>
+			
 			<div class="calculator__buttons">
-				<div>
-					<input type="button" id="clear" class="specialButton" data-key="c" value="C" />
-					<input type="button" id="invert" class="specialButton" data-key="i" value="&plusmn;" />
-					<input type="button" id="percent" class="specialButton" data-key="p" value="&percnt;" />
-					<input type="button" id="divide" class="operatorButton" data-key="/" value="&divide;" />
-				</div>
-				<div>
-					<input type="button" id="seven" class="digitButton" data-key="7" value="7" />
-					<input type="button" id="eight" class="digitButton" data-key="8" value="8" />
-					<input type="button" id="nine" class="digitButton" data-key="9" value="9" />
-					<input type="button" id="multiply" class="operatorButton" data-key="*" value="&times;" />
-				</div>
-				<div>
-					<input type="button" id="four" class="digitButton" data-key="4" value="4" />
-					<input type="button" id="five" class="digitButton" data-key="5" value="5" />
-					<input type="button" id="six" class="digitButton" data-key="6" value="6" />
-					<input type="button" id="subtract" class="operatorButton" data-key="-" value="&minus;" />
-				</div>
-				<div>
-					<input type="button" id="one" class="digitButton" data-key="1" value="1" />
-					<input type="button" id="two" class="digitButton" data-key="2" value="2" />
-					<input type="button" id="three" class="digitButton" data-key="3" value="3" />
-					<input type="button" id="add" class="operatorButton" data-key="+" value="&plus;" />
-				</div>
-				<div>
-					<input type="button" id="zero" class="digit zeroButton" data-key="0" value="0" />
-					<input type="button" id="decimal" class="specialButton" data-key="." value="." />
-					<input type="button" id="equals" class="operatorButton" data-key="=" value="&equals;" />
-				</div>
+					<input type="button" id="clear" data-key="c" value="C" />
+
+					<input type="button" id="invert" data-key="i" value="&plusmn;" />
+
+					<input type="button" id="percent" data-key="p" value="&percnt;" />
+
+					<input type="button" id="delete" data-key="Backspace" value="DEL" />
+
+					<input type="button" id="divide" data-key="/" value="&divide;" />
+
+					<input type="button" id="one" data-key="1" value="1" />
+
+					<input type="button" id="two" data-key="2" value="2" />
+
+					<input type="button" id="three" data-key="3" value="3" />
+
+					<input type="button" id="multiply" data-key="*" value="&times;" />
+
+					<input type="button" id="four" data-key="4" value="4" />
+
+					<input type="button" id="five" data-key="5" value="5" />
+
+					<input type="button" id="six" data-key="6" value="6" />	
+					
+					<input type="button" id="subtract" data-key="-" value="&minus;" />
+
+					<input type="button" id="seven" data-key="7" value="7" />
+
+					<input type="button" id="eight" data-key="8" value="8" />
+
+					<input type="button" id="nine" data-key="9" value="9" />
+
+					<input type="button" id="add" data-key="+" value="&plus;" />
+
+					<input type="button" id="zero" data-key="0" value="0" />
+
+					<input type="button" id="decimal" data-key="." value="." />
+
+					<input type="button" id="equals" data-key="=" value="&equals;" />	
 			</div>
 		</div>
 		<!-- Scripts -->

@@ -3,126 +3,163 @@ const calculatorDisplay = document.querySelector('#display');
 
 //
 function simulateButtonClick(str) {
-	if (str === 'Backspace') {
-		return;
-	} else if (str === 'Enter') {
-		document.querySelector(`[data-key='=']`).classList.add('--active');
+	if (str === 'Enter') {
+		document.querySelector(`[data-key='=']`).classList.add('--isActive');
 		setTimeout(() => {
-			document.querySelector(`[data-key='=']`).classList.remove('--active');
-		}, 50);
-	} else if (/[0-9.\/*\-+cip]/g.test(str) === true) {
-		document.querySelector(`[data-key='${str}']`).classList.add('--active');
+			document.querySelector(`[data-key='=']`).classList.remove('--isActive');
+		}, 150);
+	} else if (/[0-9.\/*\-+=cip]/g.test(str) === true || str === 'Backspace') {
+		document.querySelector(`[data-key='${str}']`).classList.add('--isActive');
 		setTimeout(() => {
-			document.querySelector(`[data-key='${str}']`).classList.remove('--active');
-		}, 50);
+			document.querySelector(`[data-key='${str}']`).classList.remove('--isActive');
+		}, 150);
 	} else {
 		return;
 	}
 }
 
 //
+function percent(str) {
+	calculatorDisplay.value = str / 100;
+}
+
+//
+function invert(str) {
+	calculatorDisplay.value = -str;
+}
+
+//
+function deleteLast(str) {
+	calculatorDisplay.value = str.slice(0, -1);
+}
+
+//
+function deleteAll(str) {
+	calculatorDisplay.value = '';
+}
+
+//
+function render(str) {
+	calculatorDisplay.value += str;
+}
+
+//
+function replace(str) {
+	calculatorDisplay.value = str;
+}
+
+//
 function updateDisplayOnButtonClick(e) {
+	console.log(e.target.dataset.key);
+	simulateButtonClick(e.target.dataset.key);
+
 	if (/[0-9]/g.test(e.target.dataset.key) === true) {
-		calculatorDisplay.value += e.target.dataset.key;
+		render(e.target.dataset.key);
 	} else if (e.target.dataset.key === '.') {
 		if (calculatorDisplay.value === '') {
-			calculatorDisplay.value = '0.';
+			render('0.');
 		} else if (
 			calculatorDisplay.value !== '' &&
 			typeof eval(calculatorDisplay.value + e.target.dataset.key) === 'number'
 		) {
-			calculatorDisplay.value += e.target.dataset.key;
+			render(e.target.dataset.key);
 		} else {
 			return;
 		}
-	} else if (/[\/*\-+]/g.test(e.key) === true) {
+	} else if (/[\/*\-+]/g.test(e.target.dataset.key) === true) {
 		if (calculatorDisplay.value === '') {
-			calculatorDisplay.value = `0${e.target.dataset.key}`;
+			render(`0${e.target.dataset.key}`);
 		} else if (
 			/[0-9.]/g.test(calculatorDisplay.value) === true &&
 			/[\/*\-+]/g.test(calculatorDisplay.value) === false
 		) {
-			calculatorDisplay.value += e.target.dataset.key;
+			render(e.target.dataset.key);
 		} else {
 			return;
 		}
 	} else if (e.target.dataset.key === 'i') {
 		if (/[0-9.]/g.test(calculatorDisplay.value) === true) {
-			calculatorDisplay.value = -calculatorDisplay.value;
+			invert(calculatorDisplay.value);
+		} else {
+			return;
 		}
 	} else if (e.target.dataset.key === 'p') {
 		if (/[0-9.]/g.test(calculatorDisplay.value) === true) {
-			calculatorDisplay.value = calculatorDisplay.value / 100;
+			percent(calculatorDisplay.value);
+		} else {
+			return;
 		}
 	} else if (e.target.dataset.key === 'c') {
-		calculatorDisplay.value = '';
-	} else if (e.target.dataset.key === 'Backspace' || e.target.dataset.key === 'Delete') {
-		calculatorDisplay.value = calculatorDisplay.value.slice(0, -1);
+		deleteAll(calculatorDisplay.value);
+	} else if (e.target.dataset.key === 'Backspace') {
+		deleteLast(calculatorDisplay.value);
 	} else if (e.target.dataset.key === '=' || e.target.dataset.key === 'Enter') {
-		let currentResult = eval(calculatorDisplay.value);
-		if (
-			/[0-9.\/*\-+]/.test(calculatorDisplay.value) === true &&
-			typeof currentResult === 'number'
-		) {
-			calculatorDisplay.value = currentResult;
+		let result = eval(calculatorDisplay.value);
+		if (/[0-9.\/*\-+]/.test(calculatorDisplay.value) === true && typeof result === 'number') {
+			replace(result);
+		} else {
+			return;
 		}
 	} else {
-		return;
+		e.preventDefault();
 	}
 }
 
 //
 function updateDisplayOnKeypress(e) {
 	console.log(e.key);
+	simulateButtonClick(e.key);
 
-	if (/[0-9]/g.test(e.key) === true) {
-		calculatorDisplay.value += e.key;
+	if (/[0-9]/g.test(e.key) === true && /[F]/g.test(e.key) !== true) {
+		render(e.key);
 	} else if (e.key === '.') {
 		if (calculatorDisplay.value === '') {
-			calculatorDisplay.value = '0.';
+			render('0.');
 		} else if (
 			calculatorDisplay.value !== '' &&
 			typeof eval(calculatorDisplay.value + e.key) === 'number'
 		) {
-			calculatorDisplay.value += e.key;
+			render(e.key);
 		} else {
 			return;
 		}
 	} else if (/[\/*\-+]/g.test(e.key) === true) {
 		if (calculatorDisplay.value === '') {
-			calculatorDisplay.value = `0${e.key}`;
+			render(`0${e.key}`);
 		} else if (
 			/[0-9.]/g.test(calculatorDisplay.value) === true &&
 			/[\/*\-+]/g.test(calculatorDisplay.value) === false
 		) {
-			calculatorDisplay.value += e.key;
+			render(e.key);
 		} else {
 			return;
 		}
 	} else if (e.key === 'i') {
 		if (/[0-9.]/g.test(calculatorDisplay.value) === true) {
-			calculatorDisplay.value = -calculatorDisplay.value;
+			invert(calculatorDisplay.value);
+		} else {
+			return;
 		}
 	} else if (e.key === 'p') {
 		if (/[0-9.]/g.test(calculatorDisplay.value) === true) {
-			calculatorDisplay.value = calculatorDisplay.value / 100;
+			percent(calculatorDisplay.value);
+		} else {
+			return;
 		}
 	} else if (e.key === 'c') {
-		calculatorDisplay.value = '';
+		deleteAll(calculatorDisplay.value);
 	} else if (e.key === 'Backspace') {
-		calculatorDisplay.value = calculatorDisplay.value.slice(0, -1);
+		deleteLast(calculatorDisplay.value);
 	} else if (e.key === '=' || e.key === 'Enter') {
-		let currentResult = eval(calculatorDisplay.value);
-		if (
-			/[0-9.\/*\-+]/.test(calculatorDisplay.value) === true &&
-			typeof currentResult === 'number'
-		) {
-			calculatorDisplay.value = currentResult;
+		let result = eval(calculatorDisplay.value);
+		if (/[0-9.\/*\-+]/.test(calculatorDisplay.value) === true && typeof result === 'number') {
+			replace(result);
+		} else {
+			return;
 		}
 	} else {
-		return;
+		e.preventDefault();
 	}
-	simulateButtonClick(e.key);
 }
 
 // If a calculator button is clicked, update the calculator display
