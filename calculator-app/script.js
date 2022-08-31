@@ -35,7 +35,8 @@ function deleteLast(str) {
 
 //
 function deleteAll(str) {
-	calculatorDisplay.value = '';
+	str = '';
+	calculatorDisplay.value = str;
 }
 
 //
@@ -51,7 +52,6 @@ function replace(str) {
 //
 function updateDisplayOnButtonClick(e) {
 	console.log(e.target.dataset.key);
-	simulateButtonClick(e.target.dataset.key);
 
 	if (/[0-9]/g.test(e.target.dataset.key) === true) {
 		render(e.target.dataset.key);
@@ -107,8 +107,17 @@ function updateDisplayOnButtonClick(e) {
 
 //
 function updateDisplayOnKeypress(e) {
+	if (
+		(/[0-9.\/*\-+=cip]/g.test(e.key) !== true && /[F]/g.test(e.key) === true) ||
+		e.key !== 'Backspace' ||
+		e.key !== 'Enter'
+	) {
+		e.preventDefault();
+	} else {
+		simulateButtonClick(e.key);
+	}
+
 	console.log(e.key);
-	simulateButtonClick(e.key);
 
 	if (/[0-9]/g.test(e.key) === true && /[F]/g.test(e.key) !== true) {
 		render(e.key);
