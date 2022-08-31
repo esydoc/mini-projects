@@ -1,0 +1,137 @@
+/* 
+
+CLASS NAMING (BEM/camelCase)
+
+.blockClass__elementClass--modifierClass {
+	property-name: value;
+}
+
+PROPERTY ORDER (By Type)
+
+propertyTypes {
+	box: ;
+
+	border: ;
+
+	background: ;
+
+	text: ;
+
+	other: ;
+}
+
+*/
+
+/* Custom Author Styles */
+/* ========================================================================== */
+
+:root {
+	--button-height: 4.2rem;
+	--button-margin: 0.32rem;
+	--button-padding: 0.8rem;
+	--button-width: 4.2rem;
+
+	--theme-black: #232323;
+	--theme-white: #fffffa;
+	--theme-grey: #d5d5d5;
+	--theme-red: #a00;
+}
+
+body {
+	align-items: center;
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	width: 100vw;
+
+	background: var(--theme-grey);
+
+	color: var(--theme-black);
+
+	font-size: 1.6rem;
+}
+
+.calculator {
+	align-items: center;
+	box-shadow: 0 0 15px 5px #00000040;
+	display: flex;
+	flex-wrap: wrap;
+	height: 40rem;
+	justify-content: center;
+	padding: 0.8rem;
+	width: 25rem;
+
+	border-radius: 0.8rem;
+
+	background: transparent;
+
+	color: inherit;
+	text-align: center;
+}
+
+.calculator__display {
+	box-shadow: none;
+	height: 20%;
+	resize: none;
+	width: 80%;
+
+	border: none;
+
+	background: transparent;
+
+	caret-color: transparent;
+	color: inherit;
+	font-size: 3.2rem;
+	line-height: var(--button-height);
+	text-align: right;
+
+	cursor: default;
+}
+
+.calculator__display:focus {
+	outline: none;
+}
+
+.calculator__display::placeholder {
+	color: inherit;
+
+	opacity: 50%;
+}
+
+.calculator__display::-webkit-scrollbar {
+	display: none;
+}
+
+/* BUTTONS */
+
+.calculator__button {
+	height: var(--button-height);
+	margin: var(--button-margin);
+	padding: var(--button-padding);
+	width: var(--button-width);
+
+	border: none;
+	border-radius: 50%;
+
+	background: transparent;
+
+	color: var(--theme-black);
+	font-size: 1.6rem;
+	text-align: center;
+
+	cursor: pointer;
+}
+
+.calculator__button.--clear {
+	color: var(--theme-red);
+	font-size: 1.7rem;
+}
+
+.calculator__button.--delete {
+	color: var(--theme-red);
+	font-size: 1.4rem;
+}
+
+.calculator__button.--percent {
+	font-size: 1.7rem;
+}
