@@ -1,5 +1,3 @@
-/* style.css - Customer Author Styles */
-
 /* 
 
 CLASS NAMING (BEM/camelCase)
@@ -24,17 +22,8 @@ propertyTypes {
 
 */
 
-/* 
+/* Custom Author Styles */
+/* ========================================================================== */
 
-STYLESHEETS ORDER/CATERGORIES
-
-0. _normalize.css
-1. _base.css
-2. _custom.css
-3. _mqs.css
-4. _helpers.css
-5. _print.css
-
-*/
-
-/* BASE RULES */
+:root {
+}
