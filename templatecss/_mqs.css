@@ -1,33 +1,4 @@
-/* 
-
-CLASS NAMING (BEM/camelCase)
-
-.blockClass__elementClass--modifierClass {
-	property-name: value;
-}
-
-PROPERTY ORDER (By Type)
-
-propertyTypes {
-	box: ;
-
-	border: ;
-
-	background: ;
-
-	text: ;
-
-	other: ;
-}
-
-*/
-
-/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
+/* Media Queries for Responsive Design */
 
 @media (hover: hover) and (pointer: fine) {
 }

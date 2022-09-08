@@ -1,29 +1,4 @@
-/* 
-
-CLASS NAMING (BEM/camelCase)
-
-.blockClass__elementClass--modifierClass {
-	property-name: value;
-}
-
-PROPERTY ORDER (By Type)
-
-propertyTypes {
-	box: ;
-
-	border: ;
-
-	background: ;
-
-	text: ;
-
-	other: ;
-}
-
-*/
-
 /* Custom Author Styles */
-/* ========================================================================== */
 
 :root {
 }

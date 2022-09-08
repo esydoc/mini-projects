@@ -2,30 +2,13 @@
 const calculatorDisplay = document.querySelector('#display');
 
 //
-function simulateButtonClick(str) {
-	if (str === 'Enter') {
-		document.querySelector(`[data-key='=']`).classList.add('--isActive');
-		setTimeout(() => {
-			document.querySelector(`[data-key='=']`).classList.remove('--isActive');
-		}, 150);
-	} else if (/[0-9.\/*\-+=cip]/g.test(str) === true || str === 'Backspace') {
-		document.querySelector(`[data-key='${str}']`).classList.add('--isActive');
-		setTimeout(() => {
-			document.querySelector(`[data-key='${str}']`).classList.remove('--isActive');
-		}, 150);
-	} else {
-		return;
-	}
+function invert(str) {
+	calculatorDisplay.value = -str;
 }
 
 //
 function percent(str) {
 	calculatorDisplay.value = str / 100;
-}
-
-//
-function invert(str) {
-	calculatorDisplay.value = -str;
 }
 
 //
@@ -50,129 +33,94 @@ function replace(str) {
 }
 
 //
-function updateDisplayOnButtonClick(e) {
-	console.log(e.target.dataset.key);
+function updateDisplay(e) {
+	let displayValue = calculatorDisplay.value;
+	let buttonValue = e.target.dataset.key;
 
-	if (/[0-9]/g.test(e.target.dataset.key) === true) {
-		render(e.target.dataset.key);
-	} else if (e.target.dataset.key === '.') {
-		if (calculatorDisplay.value === '') {
+	const rxNumbers = /[0-9]/g;
+	const rxNumbersDecimals = /[0-9.]/g;
+	const rxNumbersDecimalsOperators = /[0-9.\/*\-+]/g;
+	const rxOperators = /[\/*\-+]/g;
+
+	if (rxNumbers.test(buttonValue) === true) {
+		// When a number button is clicked, add the number to the display
+		render(buttonValue);
+	} else if (buttonValue === '.') {
+		// When the decimal button is clicked:
+		// If the display is empty, add '0' + '.' to the display,
+		// But if the display isn't empty AND adding a decimal will still result in a number string, add the decimal to the display
+		if (displayValue === '') {
 			render('0.');
+		} else if (displayValue !== '' && typeof eval(displayValue + buttonValue) === 'number') {
+			render(buttonValue);
+		}
+	} else if (rxOperators.test(buttonValue) === true) {
+		// When an operator button is clicked:
+		// If the display is empty, add '0' + the operator to the display,
+		// But if the display has numbers and no operators, add the operator to the display
+		if (displayValue === '') {
+			render(`0${buttonValue}`);
 		} else if (
-			calculatorDisplay.value !== '' &&
-			typeof eval(calculatorDisplay.value + e.target.dataset.key) === 'number'
+			rxNumbersDecimals.test(displayValue) === true &&
+			rxOperators.test(displayValue) === false
 		) {
-			render(e.target.dataset.key);
-		} else {
-			return;
+			render(buttonValue);
 		}
-	} else if (/[\/*\-+]/g.test(e.target.dataset.key) === true) {
-		if (calculatorDisplay.value === '') {
-			render(`0${e.target.dataset.key}`);
-		} else if (
-			/[0-9.]/g.test(calculatorDisplay.value) === true &&
-			/[\/*\-+]/g.test(calculatorDisplay.value) === false
-		) {
-			render(e.target.dataset.key);
-		} else {
-			return;
+	} else if (buttonValue === 'i') {
+		// When the invert button is clicked,
+		// If the display contains only a number, invert the number and display it
+		if (rxNumbersDecimals.test(displayValue) === true) {
+			invert(displayValue);
 		}
-	} else if (e.target.dataset.key === 'i') {
-		if (/[0-9.]/g.test(calculatorDisplay.value) === true) {
-			invert(calculatorDisplay.value);
-		} else {
-			return;
+	} else if (buttonValue === 'p') {
+		// When the percentage button is clicked,
+		// If the display contains only a number, divide the number by 100 and display it
+		if (rxNumbersDecimals.test(displayValue) === true) {
+			percent(displayValue);
 		}
-	} else if (e.target.dataset.key === 'p') {
-		if (/[0-9.]/g.test(calculatorDisplay.value) === true) {
-			percent(calculatorDisplay.value);
-		} else {
-			return;
-		}
-	} else if (e.target.dataset.key === 'c') {
-		deleteAll(calculatorDisplay.value);
-	} else if (e.target.dataset.key === 'Backspace') {
-		deleteLast(calculatorDisplay.value);
-	} else if (e.target.dataset.key === '=' || e.target.dataset.key === 'Enter') {
-		let result = eval(calculatorDisplay.value);
-		if (/[0-9.\/*\-+]/.test(calculatorDisplay.value) === true && typeof result === 'number') {
+	} else if (buttonValue === 'c') {
+		// When the clear button is clicked,
+		// Clear the display
+		deleteAll(displayValue);
+	} else if (buttonValue === 'Backspace') {
+		// When the delete button is clicked,
+		// Delete the last character in the display
+		deleteLast(displayValue);
+	} else if (buttonValue === '=') {
+		// When the equals button is clicked,
+		// If calculating what's currently on the display results in a number string, display the result
+		let result = eval(displayValue);
+		if (rxNumbersDecimalsOperators.test(displayValue) === true && typeof result === 'number') {
 			replace(result);
-		} else {
-			return;
 		}
-	} else {
-		e.preventDefault();
 	}
 }
 
 //
-function updateDisplayOnKeypress(e) {
+function simulateButtonClick(e) {
+	let keypress = e.key;
+	let button = document.querySelector(`[data-key='${keypress}']`);
+
 	if (
-		(/[0-9.\/*\-+=cip]/g.test(e.key) !== true && /[F]/g.test(e.key) === true) ||
-		e.key !== 'Backspace' ||
-		e.key !== 'Enter'
+		/[0-9.\/*\-+=cip]/g.test(keypress) === true ||
+		keypress === 'Backspace' ||
+		keypress === 'Enter'
 	) {
-		e.preventDefault();
+		if (keypress === 'Enter') {
+			keypress === '=';
+		}
+		button.click();
+		button.classList.add('--isActive');
+		setTimeout(() => {
+			button.classList.remove('--isActive');
+		}, 150);
 	} else {
-		simulateButtonClick(e.key);
-	}
-
-	console.log(e.key);
-
-	if (/[0-9]/g.test(e.key) === true && /[F]/g.test(e.key) !== true) {
-		render(e.key);
-	} else if (e.key === '.') {
-		if (calculatorDisplay.value === '') {
-			render('0.');
-		} else if (
-			calculatorDisplay.value !== '' &&
-			typeof eval(calculatorDisplay.value + e.key) === 'number'
-		) {
-			render(e.key);
-		} else {
-			return;
-		}
-	} else if (/[\/*\-+]/g.test(e.key) === true) {
-		if (calculatorDisplay.value === '') {
-			render(`0${e.key}`);
-		} else if (
-			/[0-9.]/g.test(calculatorDisplay.value) === true &&
-			/[\/*\-+]/g.test(calculatorDisplay.value) === false
-		) {
-			render(e.key);
-		} else {
-			return;
-		}
-	} else if (e.key === 'i') {
-		if (/[0-9.]/g.test(calculatorDisplay.value) === true) {
-			invert(calculatorDisplay.value);
-		} else {
-			return;
-		}
-	} else if (e.key === 'p') {
-		if (/[0-9.]/g.test(calculatorDisplay.value) === true) {
-			percent(calculatorDisplay.value);
-		} else {
-			return;
-		}
-	} else if (e.key === 'c') {
-		deleteAll(calculatorDisplay.value);
-	} else if (e.key === 'Backspace') {
-		deleteLast(calculatorDisplay.value);
-	} else if (e.key === '=' || e.key === 'Enter') {
-		let result = eval(calculatorDisplay.value);
-		if (/[0-9.\/*\-+]/.test(calculatorDisplay.value) === true && typeof result === 'number') {
-			replace(result);
-		} else {
-			return;
-		}
-	} else {
-		e.preventDefault();
+		console.log('Invalid Key!');
 	}
 }
 
 // If a calculator button is clicked, update the calculator display
-window.addEventListener('click', updateDisplayOnButtonClick);
+window.addEventListener('click', updateDisplay);
 
 // If a keyboard key is pressed, update the calculator
-window.addEventListener('keydown', updateDisplayOnKeypress);
+window.addEventListener('keydown', simulateButtonClick);

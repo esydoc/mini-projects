@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Metadata -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="author" content="esydoc" />
+		<meta
+			name="description"
+			content="A colour app that can generate random colors and gradients in HEX, RGB and HSL values."
+		/>
+		<title>Color App</title>
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href="/color-app/style.css" />
+	</head>
+	<body>
+		<!-- Content -->
+		<div class="userBox">
+			<input
+				type="button"
+				id="generateColor"
+				class="userBox__generatorButton"
+				value="Generate Color"
+			/>
+
+			<label for="hexOutput" id="outputLabel" class="userBox__outputLabel">HEX:</label>
+
+			<output id="hexOutput" class="userBox__outputValue --forcedSelectable"></output>
+
+			<label for="rgbOutput" id="outputLabel" class="userBox__outputLabel">RGB:</label>
+
+			<output id="rgbOutput" class="userBox__outputValue --forcedSelectable"></output>
+
+			<label for="hslOutput" id="outputLabel" class="userBox__outputLabel">HSL:</label>
+
+			<output id="hslOutput" class="userBox__outputValue --forcedSelectable"></output>
+
+			<input
+				type="button"
+				id="generateLinearGradient"
+				class="userBox__generatorButton"
+				value="Generate Gradient"
+			/>
+		</div>
+		<!-- Scripts -->
+		<script src="/color-app/script.js"></script>
+	</body>
+</html>

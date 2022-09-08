@@ -1,103 +1,54 @@
-/* 
+/* Helper Classes */
 
-CLASS NAMING (BEM/camelCase)
-
-.blockClass__elementClass--modifierClass {
-	property-name: value;
-}
-
-PROPERTY ORDER (By Type)
-
-propertyTypes {
-	box: ;
-
-	border: ;
-
-	background: ;
-
-	text: ;
-
-	other: ;
-}
-
-*/
-
-/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
+/* Hide visually and from screen readers */
 .--hidden,
 [hidden] {
-  display: none !important;
+	display: none !important;
 }
 
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
-
+/* Hide visually but be available to screen readers: https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
+/* (1) For long content, line feeds are not interpreted as spaces and a small width causes content to wrap 1 word per line: https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe */
 .--partiallyHidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  /* 1 */
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px; /* (1) */
+
+	white-space: nowrap;
 }
 
-/*
- * Extends the .--partiallyHidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-
+/* Extends the .--partiallyHidden class to allow the element to be focusable when navigated to with a keyboard: https://www.drupal.org/node/897638 */
 .--partiallyHidden.focusable:active,
 .--partiallyHidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  white-space: inherit;
-  width: auto;
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+
+	white-space: inherit;
 }
 
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
+/* Hide visually and from screen but maintain layout */
 .--invisible {
-  visibility: hidden;
+	visibility: hidden;
 }
 
-/*
- * Clearfix: contain floats
- *
- * The use of `table` rather than `block` is only necessary if using
- * `::before` to contain the top-margins of child elements.
- */
-
+/* ClearFix contains floats */
+/* The use of 'table' rather than 'block' is only necessary if using '::before' to contain the top-margin's of child elements */
 .--clearFix::before,
 .--clearFix::after {
-  content: "";
-  display: table;
+	content: '';
+	display: table;
 }
 
 .--clearFix::after {
-  clear: both;
+	clear: both;
 }
 
 .--forcedUnselectable {
@@ -115,8 +66,8 @@ propertyTypes {
 }
 
 .--scrollbarHidden {
-	overflow: auto;
 	-ms-overflow-style: none;
+	overflow: auto;
 	scrollbar-width: none;
 }
 
