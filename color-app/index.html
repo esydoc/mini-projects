@@ -1,37 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<title>Color App</title>
+		<meta name="description" content="Generate colors/gradients in hex/rgb/hsl formats." />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<title>Color App</title>
-
-		<link rel="stylesheet" href="/color-app/style.css" />
-
-		<meta
-			name="description"
-			content="Generates random colors and gradients in hex/rgb/hsl formats."
-		/>
-		<meta property="og:title" content="Color App" />
-		<meta
-			property="og:description"
-			content="Generates random colors and gradients in hex/rgb/hsl formats."
-		/>
-		<meta property="og:image" content="website-image.jpg" />
-		<meta property="og:image:alt" content="Image description" />
-		<meta property="og:locale" content="en_AU" />
-		<meta property="og:type" content="website" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta property="og:url" content="www.website-name.com" />
-		<link rel="canonical" href="www.website-name.com" />
+		<meta property="og:title" content="" />
+		<meta property="og:type" content="" />
+		<meta property="og:url" content="" />
+		<meta property="og:image" content="" />
 
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 		<link rel="manifest" href="/site.webmanifest" />
 
-		<meta name="theme-color" content="#101010" media="(prefers-color-scheme: dark)" />
-		<meta name="theme-color" content="#FCFCFC" media="(prefers-color-scheme: light)" />
+		<link rel="stylesheet" href="css/style.css" />
+
+		<meta name="theme-color" content="#fcfcfc" />
 	</head>
 	<body>
 		<div class="userBox">
@@ -43,7 +30,6 @@
 			/>
 
 			<label for="hexOutput" id="outputLabel" class="userBox__outputLabel">hex</label>
-
 			<output
 				id="hexOutput"
 				class="userBox__outputValue --forcedSelectable"
@@ -51,7 +37,6 @@
 			></output>
 
 			<label for="rgbOutput" id="outputLabel" class="userBox__outputLabel">rgb</label>
-
 			<output
 				id="rgbOutput"
 				class="userBox__outputValue --forcedSelectable"
@@ -59,7 +44,6 @@
 			></output>
 
 			<label for="hslOutput" id="outputLabel" class="userBox__outputLabel">hsl</label>
-
 			<output
 				id="hslOutput"
 				class="userBox__outputValue --forcedSelectable"
