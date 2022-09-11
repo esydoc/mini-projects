@@ -55,8 +55,8 @@ function generateLinearGradient() {
 	let color2 = generateHex();
 	return [
 		`linear-gradient(to right, ${color1}, ${color2})`,
-		`linear-gradient(to right, ${hexToRgb(color1)}, ${hexToRgb(color2)})`,
-		`linear-gradient(to right, ${hexToHsl(color1)}, ${hexToHsl(color2)})`,
+		`${hexToRgb(color1)}, ${hexToRgb(color2)}`,
+		`${hexToHsl(color1)}, ${hexToHsl(color2)}`,
 	];
 }
 
@@ -293,12 +293,12 @@ function updateOutputValues(color) {
 function updateOutputTextStyles(color) {
 	outputLabels.forEach((outputLabel) => {
 		outputLabel.style.color = color;
-		outputLabel.style.textShadow = '0.16rem 0.16rem 0.32rem #00000080';
+		// outputLabel.style.textShadow = '0.16rem 0.16rem 0.32rem #00000080';
 	});
 
 	outputs.forEach((output) => {
 		output.style.color = color;
-		output.style.textShadow = '0.16rem 0.16rem 0.32rem #00000080';
+		// output.style.textShadow = '0.16rem 0.16rem 0.32rem #00000080';
 	});
 }
 
