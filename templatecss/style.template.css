@@ -1,14 +1,27 @@
-/* style.css - Customer Author Styles */
+/* 
+
+STYLESHEET ORDER
+1. _default.css (include in final stylesheet)
+2. _custom.css (include in final stylesheet)
+3. _media.css (include in final stylesheet)
+4. _utility.css (include in final stylesheet)
+5. _print.css (load asynchronously)
+
+*/
 
 /* 
 
-CLASS NAMING (BEM/camelCase)
+CLASS NAMING CONVENTION
 
-.blockClass__elementClass--modifierClass {
+.parentElements__childElements--utilityClasses {
 	property-name: value;
 }
 
-PROPERTY ORDER (By Type)
+*/
+
+/*
+
+PROPERTY ORDER
 
 propertyTypes {
 	box: ;
@@ -23,18 +36,3 @@ propertyTypes {
 }
 
 */
-
-/* 
-
-STYLESHEETS ORDER/CATERGORIES
-
-0. _normalize.css
-1. _base.css
-2. _custom.css
-3. _mqs.css
-4. _helpers.css
-5. _print.css
-
-*/
-
-/* BASE RULES */

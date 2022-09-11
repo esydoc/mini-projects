@@ -1,4 +1,4 @@
-/* Media Queries for Responsive Design */
+/* MEDIA QUERIES */
 
 @media (hover: hover) and (pointer: fine) {
 }
@@ -30,10 +30,4 @@
 		transition-duration: 0s !important;
 		transition-delay: 0s !important;
 	}
-}
-
-@media print,
-	(min-resolution: 1.25dppx),
-	(min-resolution: 120dpi),
-	(-webkit-min-device-pixel-ratio: 1.25) {
 }

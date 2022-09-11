@@ -1,4 +1,21 @@
-/* Custom Author Styles */
+/* CUSTOM STYLES */
 
 :root {
+	--default-black: #000000e6;
+	--default-black-opacity25: #00000040;
+	--default-black-opacity50: #00000080;
+
+	--default-white: #fcfcfc;
+	--default-white-opacity25: #fcfcfc40;
+	--default-white-opacity50: #fcfcfc80;
+
+	--theme-red: #a00;
+	--theme-red-opacity25: #aa000040;
+	--theme-red-opactiy50: #aa000080;
+
+	--box-shadow-opacity25: 0.16rem 0.8rem 0.8rem #00000040;
+	--box-shadow-opacity50: 0.16rem 0.8rem 0.8rem #00000080;
+
+	--text-shadow-opacity25: 0.16rem 0.32rem 0.48rem #00000040;
+	--text-shadow-opacity50: 0.16rem 0.32rem 0.48rem #00000080;
 }

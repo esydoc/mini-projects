@@ -1,6 +1,7 @@
-/* Helper Classes */
+/* UTILITY CLASSES */
 
 /* Hide visually and from screen readers */
+
 .--hidden,
 [hidden] {
 	display: none !important;
@@ -8,6 +9,7 @@
 
 /* Hide visually but be available to screen readers: https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
 /* (1) For long content, line feeds are not interpreted as spaces and a small width causes content to wrap 1 word per line: https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe */
+
 .--partiallyHidden {
 	border: 0;
 	clip: rect(0, 0, 0, 0);
@@ -22,6 +24,7 @@
 }
 
 /* Extends the .--partiallyHidden class to allow the element to be focusable when navigated to with a keyboard: https://www.drupal.org/node/897638 */
+
 .--partiallyHidden.focusable:active,
 .--partiallyHidden.focusable:focus {
 	clip: auto;
@@ -35,12 +38,14 @@
 }
 
 /* Hide visually and from screen but maintain layout */
+
 .--invisible {
 	visibility: hidden;
 }
 
 /* ClearFix contains floats */
 /* The use of 'table' rather than 'block' is only necessary if using '::before' to contain the top-margin's of child elements */
+
 .--clearFix::before,
 .--clearFix::after {
 	content: '';
@@ -51,6 +56,8 @@
 	clear: both;
 }
 
+/* Make unselectable */
+
 .--forcedUnselectable {
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -58,12 +65,16 @@
 	user-select: none;
 }
 
+/* Make selectable with one click */
+
 .--forcedSelectable {
 	-webkit-user-select: all;
 	-moz-user-select: all;
 	-ms-user-select: all;
 	user-select: all;
 }
+
+/* Hide scrollbar */
 
 .--scrollbarHidden {
 	-ms-overflow-style: none;
