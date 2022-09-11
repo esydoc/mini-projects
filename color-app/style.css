@@ -243,7 +243,7 @@ template {
 /* CUSTOM STYLES */
 
 :root {
-	--default-black: #000000e6;
+	--default-black: #101010;
 	--default-black-opacity25: #00000040;
 	--default-black-opacity50: #00000080;
 
@@ -305,9 +305,9 @@ body {
 .userBox__outputLabel {
 	height: 3.2rem;
 	margin-bottom: -3.2rem;
-	width: 16rem;
+	width: 12rem;
 
-	font-size: 1.3rem;
+	font-size: 1.48rem;
 
 	pointer-events: none;
 }
@@ -322,7 +322,6 @@ body {
 
 	cursor: default;
 	transition: transform 0.32s, text-shadow 0.32s;
-	/* z-index: 1000; */
 }
 
 .userBox__outputValue::after {
