@@ -1,27 +1,3 @@
-/* 
-
-CLASS NAMING (BEM/camelCase)
-
-.blockClass__elementClass--modifierClass {
-	property-name: value;
-}
-
-PROPERTY ORDER (By Type)
-
-propertyTypes {
-	box: ;
-
-	border: ;
-
-	background: ;
-
-	text: ;
-
-	other: ;
-}
-
-*/
-
 /* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
 /* ==========================================================================
    Print styles.
@@ -33,7 +9,7 @@ propertyTypes {
 	*,
 	*::before,
 	*::after {
-/* Black prints faster */
+		/* Black prints faster */
 		background: #fff !important;
 		box-shadow: none !important;
 		color: #000 !important;
@@ -42,51 +18,48 @@ propertyTypes {
 }
 
 a,
-  a:visited {
-    text-decoration: underline;
-  }
+a:visited {
+	text-decoration: underline;
+}
 
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
+a[href]::after {
+	content: ' (' attr(href) ')';
+}
 
-  abbr[title]::after {
-    content: " (" attr(title) ")";
-  }
+abbr[title]::after {
+	content: ' (' attr(title) ')';
+}
 
-  /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
-   */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
-  }
+/* Don't show links that are fragment identifiers */
+/* Or use the 'javascript:' psuedo-protocol */
+a[href^='#']::after,
+a[href^='javascript:']::after {
+	content: '';
+}
 
-  pre {
-    white-space: pre-wrap !important;
-  }
+pre {
+	white-space: pre-wrap !important;
+}
 
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
+pre,
+blockquote {
+	border: 1px solid #999;
+	page-break-inside: avoid;
+}
 
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
+tr,
+img {
+	page-break-inside: avoid;
+}
 
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
+p,
+h2,
+h3 {
+	orphans: 3;
+	widows: 3;
+}
 
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
+h2,
+h3 {
+	page-break-after: avoid;
 }
