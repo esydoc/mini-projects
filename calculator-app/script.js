@@ -1,4 +1,4 @@
-//
+// Store the display
 const calculatorDisplay = document.querySelector('#display');
 
 //
@@ -7,8 +7,13 @@ function invert(str) {
 }
 
 //
-function percent(str) {
+function percentDown(str) {
 	calculatorDisplay.value = str / 100;
+}
+
+// Function awaiting implementation
+function percentUp(str) {
+	calculatorDisplay.value = str * 100;
 }
 
 //
@@ -34,9 +39,12 @@ function replace(str) {
 
 //
 function updateDisplay(e) {
+	// Store the current display's value
 	let displayValue = calculatorDisplay.value;
+	// Store the dataset value of the clicked button
 	let buttonValue = e.target.dataset.key;
 
+	// Store regex shortcuts
 	const rxNumbers = /[0-9]/g;
 	const rxNumbersDecimals = /[0-9.]/g;
 	const rxNumbersDecimalsOperators = /[0-9.\/*\-+]/g;
@@ -76,7 +84,7 @@ function updateDisplay(e) {
 		// When the percentage button is clicked,
 		// If the display contains only a number, divide the number by 100 and display it
 		if (rxNumbersDecimals.test(displayValue) === true) {
-			percent(displayValue);
+			percentDown(displayValue);
 		}
 	} else if (buttonValue === 'c') {
 		// When the clear button is clicked,
@@ -98,23 +106,37 @@ function updateDisplay(e) {
 
 //
 function simulateButtonClick(e) {
+	// Store keypress value
 	let keypress = e.key;
+	// Store the calculator button that is equivalent to the keypress value
 	let button = document.querySelector(`[data-key='${keypress}']`);
 
-	if (
-		/[0-9.\/*\-+=cip]/g.test(keypress) === true ||
-		keypress === 'Backspace' ||
-		keypress === 'Enter'
-	) {
-		if (keypress === 'Enter') {
-			keypress === '=';
-		}
+	// If the keypress is a digit, operator, 'c', 'i', 'p', or 'Backspace'
+	if (/[0-9.\/*\-+=cip]/g.test(keypress) === true || keypress === 'Backspace') {
+		// Click the equivalent calculator button to render its value
 		button.click();
+		// Toggle the active class on the equivalent calculator button to
+		// simulate a hover
 		button.classList.add('--isActive');
 		setTimeout(() => {
 			button.classList.remove('--isActive');
 		}, 150);
-	} else {
+	}
+	// Else if the keypress is 'Enter'
+	else if (keypress === 'Enter') {
+		// Store the calculator's equals button
+		button = document.querySelector(`[data-key='=']`);
+		// Click the equivalent calculator button to render its value
+		button.click();
+		// Toggle the active class on the equivalent calculator button to
+		// simulate a hover
+		button.classList.add('--isActive');
+		setTimeout(() => {
+			button.classList.remove('--isActive');
+		}, 150);
+	}
+	// Else log an error message
+	else {
 		console.log('Invalid Key!');
 	}
 }
